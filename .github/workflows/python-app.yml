@@ -71,13 +71,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - name: Set up Python 3.10
-      uses: actions/setup-python@v3
-      with:
-        python-version: "3.10"
-    - name: Install Python dependencies
-      run: |
-        python -m pip install --upgrade pip
+
+    - name: cek lokasi cuurent dir
+      run: pwd
+
+
+    # - name: Set up Python 3.10
+    #   uses: actions/setup-python@v3
+    #   with:
+    #     python-version: "3.10"
+    # - name: Install Python dependencies
+    #   run: |
+    #     python -m pip install --upgrade pip
     #     pip install -r requirements.txt
     #     pip install requests  # Ensure requests is installed
     # - name: Set up Node.js
