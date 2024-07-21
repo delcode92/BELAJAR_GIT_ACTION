@@ -19,12 +19,35 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    # - name: Set up Python 3.10
-    #   uses: actions/setup-python@v3
-    #   with:
-    #     python-version: "3.10"
-    - name: run python code
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.10"
+
+    - name: Install Python dependencies
+      run: pip install -r requirements.txt
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Start server
       run: |
-        python sample.py
-    - name: check node version
-      run: node --version
+        nohup node server.js &
+        sleep 5
+
+      # `nohup` and `&` run the server in the background
+      # `sleep 5` gives the server time to start
+    
+
+    # - name: run python code
+    #   run: |
+    #     python sample.py
+    
+
+    - name: python request to node server
+      run: python sample.py
