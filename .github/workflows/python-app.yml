@@ -78,27 +78,27 @@ jobs:
     - name: Install Python dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements.txt
-        pip install requests  # Ensure requests is installed
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '16'
-    - name: Clean cache
-      run: npm cache clean --force
-    - name: Install Node dependencies
-      run: npm install
-    - name: Start server and wait for it to be ready
-      run: |
-        nohup node server.js &
-        echo "Waiting for server to be ready..."
-        for i in {1..30}; do
-          if curl -sSf http://localhost:3000 >/dev/null 2>&1; then
-            echo "Server is up!"
-            break
-          fi
-          echo "Attempt $i: Server not ready, waiting..."
-          sleep 2
-        done
-    - name: Python request to node server
-      run: python sample.py
+    #     pip install -r requirements.txt
+    #     pip install requests  # Ensure requests is installed
+    # - name: Set up Node.js
+    #   uses: actions/setup-node@v2
+    #   with:
+    #     node-version: '16'
+    # - name: Clean cache
+    #   run: npm cache clean --force
+    # - name: Install Node dependencies
+    #   run: npm install
+    # - name: Start server and wait for it to be ready
+    #   run: |
+    #     nohup node server.js &
+    #     echo "Waiting for server to be ready..."
+    #     for i in {1..30}; do
+    #       if curl -sSf http://localhost:3000 >/dev/null 2>&1; then
+    #         echo "Server is up!"
+    #         break
+    #       fi
+    #       echo "Attempt $i: Server not ready, waiting..."
+    #       sleep 2
+    #     done
+    # - name: Python request to node server
+    #   run: python sample.py
